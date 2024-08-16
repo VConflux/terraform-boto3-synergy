@@ -1,0 +1,5 @@
+*.tfstate
+*.hcl
+*.tfstate.backup
+/.terraform
+/my_tf_key_pair.pem
