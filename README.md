@@ -5,7 +5,7 @@ This repository focuses on automating AWS infrastructure with Terraform and solv
 
 ## Purpose
 
-The project demonstrates how to set up AWS resources using Terraform and use Boto3 for querying and managing EC2 instance information. 
+The repository with different projects demonstrates how to set up AWS resources using Terraform and use Boto3 for querying and managing EC2 instance information. 
 
 ## Usage
 
