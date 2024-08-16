@@ -6,7 +6,7 @@
 This task contains Terraform configurations for managing AWS EC2 instances and VPCs. The configurations are organized into different folders:
 
 - **`key_pair`**: Contains Terraform files for managing EC2 key pairs.
-- **` ec2_instance & vpc`**: Contains Terraform files for creating and managing EC2 instances & setting up VPCs and related networking components.
+- **` ec2_instance_&_vpc`**: Contains Terraform files for creating and managing EC2 instances & setting up VPCs and related networking components.
 
 ## Prerequisites
 
@@ -32,10 +32,11 @@ terraform apply --auto-approve
 
 ### 2. Set Up EC2 Instances
 
-Finally, navigate to the ` ec2_instance & vpc` directory and apply the Terraform configuration to create and manage EC2 instances using the previously created key pairs and VPC.
+Finally, navigate to the ` ec2_instance_&_vpc` directory and apply the Terraform configuration to create and manage EC2 instances using the previously created key pairs and VPC.
 
 ```bash
-cd ../'ec2_instance & vpc'
+cd ec2_instance_&_vpc
+
 terraform init
 
 terraform validate
@@ -47,14 +48,14 @@ terraform apply --auto-approve
 
 ## Cautions
 
-- **Order of Operations**: Ensure you apply the Terraform configurations in the correct order: `key_pair`, and then ` ec2_instance & vpc`.
+- **Order of Operations**: Ensure you apply the Terraform configurations in the correct order: `key_pair`, and then ` ec2_instance_&_vpc`.
 - **Resource Cleanup**: Before deleting any resources or if you no longer need the infrastructure, make sure to run `terraform destroy` in each directory to clean up the resources properly:
   ```bash
   cd key_pair
   terraform destroy --auto-approve
 
 
-  cd ../'ec2_instance & vpc'
+  cd 'ec2_instance_&_vpc
   terraform destroy --auto-approve
   ```
   This will prevent orphaned resources and potential additional costs.
@@ -64,7 +65,7 @@ terraform apply --auto-approve
 
 ## Notes
 
-- Ensure that each directory's `terraform apply` command is executed in sequence: first `key_pair`, then `vpc`, and finally `ec2_instance`.
+- Ensure that each directory's `terraform apply` command is executed in sequence: first `key_pair`, and `ec2_instance_&_vpc`.
 - Make sure your AWS credentials have the necessary permissions to create and manage EC2 instances, VPCs, and key pairs.
 - The configurations are designed to be modular and dependent on the order of execution.
 
