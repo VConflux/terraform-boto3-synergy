@@ -9,7 +9,7 @@ The repository with different projects demonstrates how to set up AWS resources 
 
 ## Usage
 
-- Apply Terraform configurations to provision infrastructure.
+- First Apply Terraform configurations from ```0. tf_modules``` folder to provision infrastructure.
 - Run Python scripts with Boto3 to retrieve and display various AWS tasks.
 
 

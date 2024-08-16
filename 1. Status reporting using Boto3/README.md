@@ -2,7 +2,7 @@ This tasks combines AWS automation using Python with Boto3 and infrastructure ma
 
 ## Repository Structure
 
-The repository is organized into several key components under ```tf_modules``` folder for terraform files & ```Status reporting using Boto3``` folder for boto3 files.
+The repository is organized into several key components under ```0. 0. tf_modules``` folder for terraform files & ```Status reporting using Boto3``` folder for boto3 files.
 
 - **`terraform`**: Contains Terraform configurations for managing AWS infrastructure.
   - **`key_pair`**: Terraform files for creating and managing EC2 key pairs.
@@ -22,7 +22,7 @@ The repository is organized into several key components under ```tf_modules``` f
 - **AWS Credentials**: Configure AWS credentials using the AWS CLI or environment variables.
 
 ## Terraform Setup
-- Please check ```tf_modules``` folder to provisioning ec2 instance using terraform.
+- Please check ```0. 0. tf_modules``` folder to provisioning ec2 instance using terraform.
 
 ## Python Automation
 
@@ -34,15 +34,6 @@ After applying the Terraform configurations, you can use the Python scripts in t
 - **InstanceState**: The state of the instance.
 
 ### Running the Python Script
-
-1. **Navigate to the Python Automation Directory:**
-
-   ```bash
-   cd /Status reporting using Boto3
-   ```
-
-2. **Run the Python Script:**
-
    ```bash
    python ec2_status.py
    ```
@@ -54,11 +45,11 @@ After applying the Terraform configurations, you can use the Python scripts in t
 - **Resource Cleanup**: Before deleting any resources or if you no longer need the infrastructure, make sure to run `terraform destroy` in each directory to clean up the resources properly
 - **Navigate to the terraform Directory:**
   ```bash
-  cd /tf_modules/key_pair
+  cd /0. tf_modules/key_pair
   terraform destroy --auto-approve
 
 
-  cd /tf_modules/ec2_instance_&_vpc
+  cd /0. tf_modules/ec2_instance_&_vpc
   terraform destroy --auto-approve
   ```
 

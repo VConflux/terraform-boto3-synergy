@@ -3,7 +3,7 @@ import boto3
 ec2_client = boto3.client('ec2', region_name="ap-southeast-1")
 
 # with 'describe_instance_status' you can grab status, state of instances
-statuses = ec2_client.describe_instance_status()
+statuses = ec2_client.describe_instance_status()    # this describe_instance_status provides only running instance
 for status in statuses['InstanceStatuses']:
     instant_status = status['InstanceStatus']['Status']
     system_status = status['SystemStatus']['Status']
@@ -13,7 +13,8 @@ for status in statuses['InstanceStatuses']:
 
 print()
 # With 'describe_instances' is more describable output then 'describe_instance_status', so using this you can also grab instance status.  
-reservations = ec2_client.describe_instances()
+
+reservations = ec2_client.describe_instances()      # this describe_instances provides all instance, running, terminated, pending etc
 for reservation in reservations['Reservations']:    # here reservations is a value, for lising reservations we need reservations['Reservations']
     instances = reservation['Instances']
     for instance in instances:              
