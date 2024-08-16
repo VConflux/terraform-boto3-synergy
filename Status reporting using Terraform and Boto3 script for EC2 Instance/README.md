@@ -1,4 +1,4 @@
-This repository combines AWS automation using Python with Boto3 and infrastructure management using Terraform. While both Boto3 and Terraform can manage AWS resources, there are specific tasks where using both tools provides enhanced capabilities and flexibility.
+This tasks combines AWS automation using Python with Boto3 and infrastructure management using Terraform. While both Boto3 and Terraform can manage AWS resources, there are specific tasks where using both tools provides enhanced capabilities and flexibility.
 
 ## Repository Structure
 
@@ -6,7 +6,7 @@ The repository is organized into several key components under ```tf_modules``` f
 
 - **`terraform`**: Contains Terraform configurations for managing AWS infrastructure.
   - **`key_pair`**: Terraform files for creating and managing EC2 key pairs.
-  - **`ec2_instance & vpc`**: Terraform files for creating and managing EC2 instances & setting up VPCs and networking components.
+  - **`ec2_instance_&_vpc`**: Terraform files for creating and managing EC2 instances & setting up VPCs and networking components.
 
 - **`python_automation`**: Contains Python scripts utilizing Boto3 for various AWS automation tasks.
 
@@ -38,7 +38,7 @@ After applying the Terraform configurations, you can use the Python scripts in t
 1. **Navigate to the Python Automation Directory:**
 
    ```bash
-   cd python_automation
+   cd /Status reporting using Boto3
    ```
 
 2. **Run the Python Script:**
@@ -50,14 +50,15 @@ After applying the Terraform configurations, you can use the Python scripts in t
 
 ## Cautions
 
-- **Order of Operations**: Ensure you apply the Terraform configurations in the correct order: `key_pair`, and then ` ec2_instance & vpc`.
-- **Resource Cleanup**: Before deleting any resources or if you no longer need the infrastructure, make sure to run `terraform destroy` in each directory to clean up the resources properly:
+- **Order of Operations**: Ensure you apply the Terraform configurations in the correct order: `key_pair`, and then ` ec2_instance_&_vpc`.
+- **Resource Cleanup**: Before deleting any resources or if you no longer need the infrastructure, make sure to run `terraform destroy` in each directory to clean up the resources properly
+- **Navigate to the terraform Directory:**
   ```bash
-  cd key_pair
+  cd /tf_modules/key_pair
   terraform destroy --auto-approve
 
 
-  cd ../'ec2_instance & vpc'
+  cd /tf_modules/ec2_instance_&_vpc
   terraform destroy --auto-approve
   ```
 

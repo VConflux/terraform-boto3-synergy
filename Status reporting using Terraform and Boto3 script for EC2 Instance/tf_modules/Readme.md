@@ -3,7 +3,7 @@
 
 ## Overview
 
-This repository contains Terraform configurations for managing AWS EC2 instances and VPCs. The configurations are organized into different folders:
+This task contains Terraform configurations for managing AWS EC2 instances and VPCs. The configurations are organized into different folders:
 
 - **`key_pair`**: Contains Terraform files for managing EC2 key pairs.
 - **` ec2_instance & vpc`**: Contains Terraform files for creating and managing EC2 instances & setting up VPCs and related networking components.
