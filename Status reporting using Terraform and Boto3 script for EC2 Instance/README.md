@@ -1,71 +1,63 @@
-This Python script uses the Boto3 library to interact with AWS EC2 instances. It performs two main tasks:
+This repository combines AWS automation using Python with Boto3 and infrastructure management using Terraform. While both Boto3 and Terraform can manage AWS resources, there are specific tasks where using both tools provides enhanced capabilities and flexibility.
 
-1. **Retrieve and Print Instance Status**: Fetches the status and state of EC2 instances using the `describe_instance_status` method.
-2. **Retrieve and Print Instance Details**: Fetches detailed information about instances using the `describe_instances` method.
+## Repository Structure
+
+The repository is organized into several key components under ```tf_modules``` folder for terraform files & ```Status reporting using Boto3``` folder for boto3 files.
+
+- **`terraform`**: Contains Terraform configurations for managing AWS infrastructure.
+  - **`key_pair`**: Terraform files for creating and managing EC2 key pairs.
+  - **`ec2_instance & vpc`**: Terraform files for creating and managing EC2 instances & setting up VPCs and networking components.
+
+- **`python_automation`**: Contains Python scripts utilizing Boto3 for various AWS automation tasks.
 
 ## Prerequisites
 
+- **Terraform**: Ensure Terraform is installed on your system. Download it from [terraform.io](https://www.terraform.io/downloads).
 - **Python**: Ensure Python is installed on your system.
-- **Boto3**: This script requires the Boto3 library. You can install it using pip:
-  ```bash
+- **Boto3**: Install Boto3 using pip:
+```bash
   pip install boto3
-  ```
-- **AWS Credentials**: Ensure that AWS credentials are configured on your system. You can set up credentials using the AWS CLI or environment variables.
-
-## Script Details
-
-### Imports
-
-```python
-import boto3
 ```
+  
+- **AWS Credentials**: Configure AWS credentials using the AWS CLI or environment variables.
 
-### Initialization
+## Terraform Setup
+- Please check ```tf_modules``` folder to provisioning ec2 instance using terraform.
 
-The script initializes the Boto3 EC2 client for the `ap-southeast-1` region.
+## Python Automation
 
-```python
-ec2_client = boto3.client('ec2', region_name="ap-southeast-1")
-```
+After applying the Terraform configurations, you can use the Python scripts in the `python_automation` folder to automate AWS tasks. The provided script retrieves and displays information about EC2 instances, including:
 
-### Describe Instance Status
+- **InstanceId**: The ID of the instance.
+- **InstanceStatus**: The status of the instance.
+- **SystemStatus**: The system status of the instance.
+- **InstanceState**: The state of the instance.
 
-The script retrieves the status of all EC2 instances and prints their instance ID, instance status, system status, and instance state.
+### Running the Python Script
 
-```python
-statuses = ec2_client.describe_instance_status()
-for status in statuses['InstanceStatuses']:
-    instant_status = status['InstanceStatus']['Status']
-    system_status = status['SystemStatus']['Status']
-    instant_state = status['InstanceState']['Name']
-    print(f"This {status['InstanceId']} instance is {instant_status} and system status is {system_status}, finally instance state is {instant_state}")
-```
+1. **Navigate to the Python Automation Directory:**
 
-### Describe Instances
+   ```bash
+   cd python_automation
+   ```
 
-The script also retrieves detailed information about each EC2 instance, including the instance ID and its current state.
-
-```python
-reservations = ec2_client.describe_instances()
-for reservation in reservations['Reservations']:
-    instances = reservation['Instances']
-    for instance in instances:
-        print(f"Instance id is: {instance['InstanceId']} & the Instance is: {instance['State']['Name']}")
-```
-
-## Usage
-
-1. **Run the Script**: Execute the Python script in your terminal or command prompt.
+2. **Run the Python Script:**
 
    ```bash
    python ec2_status.py
    ```
 
-2. **View Output**: The script will print the status and state of all EC2 instances in the specified region.
 
-## Notes
+## Cautions
 
-- Make sure your AWS credentials have the necessary permissions to access EC2 instance details.
-- The region is set to `ap-southeast-1`, but you can change this to your preferred AWS region.
-- Ensure that the Boto3 library is installed and properly configured.
+- **Order of Operations**: Ensure you apply the Terraform configurations in the correct order: `key_pair`, and then ` ec2_instance & vpc`.
+- **Resource Cleanup**: Before deleting any resources or if you no longer need the infrastructure, make sure to run `terraform destroy` in each directory to clean up the resources properly:
+  ```bash
+  cd key_pair
+  terraform destroy --auto-approve
+
+
+  cd ../'ec2_instance & vpc'
+  terraform destroy --auto-approve
+  ```
 
