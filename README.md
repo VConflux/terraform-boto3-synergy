@@ -10,6 +10,6 @@ The repository with different projects demonstrates how to set up AWS resources 
 ## Usage
 
 - Apply Terraform configurations to provision infrastructure.
-- Run Python scripts with Boto3 to retrieve and display EC2 instance details.
+- Run Python scripts with Boto3 to retrieve and display various AWS tasks.
 
 
