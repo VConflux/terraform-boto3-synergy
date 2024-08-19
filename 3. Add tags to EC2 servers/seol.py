@@ -1,3 +1,5 @@
+import boto3
+
 ec2_client_seol = boto3.client('ec2', region_name="ap-northeast-2")
 ec2_resource_seol = boto3.resource('ec2', region_name="ap-northeast-2")
 
